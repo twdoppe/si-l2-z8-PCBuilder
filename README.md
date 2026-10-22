@@ -1,1 +1,1 @@
-# AI
+Computer component recommendatiton system
