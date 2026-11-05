@@ -2,7 +2,7 @@
 
 **Grupa:** L2 · **Zespół:** Z8 · **Data:** 04/11/2026
 Sztuczna inteligencja — laboratorium · Collegium Da Vinci · rok akad. 2026/2027
-Oddajecie mailem do **05.11, 16:45**, temat `SI L2 · Z<nr zespołu> · karta`.
+
 
 ## 1. Skład zespołu
 
