@@ -107,8 +107,11 @@ Podobne systemy ekspertowe i konfiguratory oparte na regułach kompatybilności 
 
 
 | Osoba | Za co odpowiadała |
+
 | Mykola Haponov | datasety, interfejs użytkownika, prezentacja |
+
 | Artem Chornyi | interfejs użytkownika, dokumentacja, prezentacja |
+
 | Danyl Pavlenko | rdzeń projektu i datasety |
 
 W kwestii ról w projekcie możemy powiedzieć jedno – od czasu do czasu ulegały one drobnym zmianom: jedna osoba pomagała drugiej przy tworzeniu dokumentacji (n. p. karty tematu), ktoś inny wspierał prace nad interfejsem, a kolejna osoba pomagała przy samym silniku wnioskowania. Tak czy inaczej, wszyscy mniej więcej pracowali w rolach ustalonych na samym początku, nie bez wzajemnej pomocy.
