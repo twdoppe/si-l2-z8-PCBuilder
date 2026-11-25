@@ -1,4 +1,5 @@
-# <PC BUILDER>
+
+PC BUILDER
 
 **Team:** Z8 · Artificial Intelligence lab, Collegium Da Vinci, 2026/2027 · group L2
 
