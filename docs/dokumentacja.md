@@ -69,12 +69,19 @@ W 6 na 8 przypadków nasz system ekspertowy wyraźnie wygrywa z gotowymi zestawa
 
 Strony internetowe do wariantów z punktu odniesienia:
 1: https://www.komputronik.pl/product/996108/level-go-f02-ultra-5-rtx-5060-16gb-1tb-w11h.html
+
 2: https://www.x-kom.pl/p/1585052-desktop-smx-se-ukiyo-i5-14400f-32gb-1tb-rtx5060ti-w11x.html#Specyfikacja
+
 3: https://www.oleole.pl/komputery-stacjonarne-pc/hp-pc-hp-omen-35l-r7-16-1-9060xt-nos.bhtml?from=ceneo&p=8999.00&cr=0&t=20261125-1117&utm_source=ceneo&utm_medium=referral&ceneo_cid=746c2fbd-5a62-f0a5-e200-c4755adaf556
+
 4: https://www.komputronik.pl/product/996126/komputer-level-go-f20-ultra-5-rtx-5060-32gb-2tb-w11h.html
+
 5: https://www.komputronik.pl/product/1024777/komputer-lenovo-ideacentre-tower-ultra-7-265-16gb-512gb-no-os.html
+
 6: https://dell24.pl/p/20053/Komputer-DELL-Pro-Slim-QCS1250-SFF-i5-14500-32GB-512GB-SSD-W11P-3YPS
+
 7: https://www.komputronik.pl/product/1036055/komputer-lenovo-thinkstation-p3-tower-gen-2-ultra-7-265-32gb-1tb-win11pro-czarny.html#Cechy
+
 8: https://www.x-kom.pl/p/1532141-desktop-dell-pro-tower-essential-ultra-7-265k-16gb-512gb-win11p.html#Specyfikacja
 
 ## 6. Wymagania niefunkcjonalne *(A · 5 pkt)*
