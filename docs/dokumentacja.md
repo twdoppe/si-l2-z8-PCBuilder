@@ -1,4 +1,4 @@
-# <PC BUILDER>
+PC BUILDER
 
 **Zespół:** Z8 · grupa L2 · **Repozytorium:** <https://github.com/twdoppe/si-l2-z8-PCBuilder>
 Sztuczna inteligencja — laboratorium · Collegium Da Vinci · rok akad. 2026/2027
