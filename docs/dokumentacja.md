@@ -31,7 +31,7 @@ Mówiąc o danych, które wykorzystujemy w naszym projekcie, są to zwykłe zbio
   1. System wykorzystuje wnioskowanie regułowe w przód (forward chaining) oparte na rachunku zdań i logice pierwszego rzędu (JEŻELI warunek_1 ORAZ warunek_2, TO wniosek), co pozwala na wyprowadzanie nowych faktów z danych wejściowych użytkownika (np. wyliczenie wymaganego zapasu mocy zasilacza na podstawie sumy poboru mocy TDP dobranego procesora i karty graficznej).
   2. Przeszukiwanie przestrzeni stanów odbywa się metodą przycinania gałęzi (odrzucanie całych grup niekompatybilnych części już na wczesnym etapie wnioskowania, np. poprzez dopasowanie gniazda socket oraz typu pamięci memory_type), zamiast sprawdzania każdej kombinacji po kolei.
   3. Wybór najlepszego zestawu spośród pasujących wariantów realizuje funkcja oceny dopasowania, która maksymalizuje wykorzystanie budżetu bez jego przekroczenia oraz minimalizuje różnicę wydajnościową między CPU a GPU (unikając tzw. bottlenecku), według zasady: Ocena = (Suma cen podzespołów / Budżet) - kara za dysproporcję wydajności, przy warunku, że suma cen nie przekracza budżetu.
-- Kluczowe parametry i ich wartości:
+-Kluczowe parametry i ich wartości:
   1. Alokacja budżetu według presetu celu (wagi procentowe):
      - Gaming: 45% budżetu przeznaczane jest na kartę graficzną (GPU), a 22% na procesor (CPU).
      - Workstation: 30% na GPU oraz 35% na CPU.
