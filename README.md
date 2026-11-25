@@ -35,12 +35,12 @@ Requirements:
 
 ## Team
 
- 1. Mykola Haponov – user interface (frontend)
+ 1. Mykola Haponov – datasets, user interface, presentation
 
- 2. Artem Chornyi – documentation and presentation
+ 2. Artem Chornyi – user interface, documentation, presentation
 
- 3. Danyl Pavlenko – core rule-based reasoning engine (backend & database)
-
+ 3. Danyl Pavlenko – core reasoning engine and datasets
+ 
 ## Documentation
 
 Full documentation in Polish: `docs/dokumentacja.md`. Technical abstract: `docs/abstract_en.md`.
