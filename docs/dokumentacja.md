@@ -68,6 +68,7 @@ Wnioski z ewaluacji (uczciwa ocena mocnych i słabych stron):
 W 6 na 8 przypadków nasz system ekspertowy wyraźnie wygrywa z gotowymi zestawami sklepowymi pod względem wydajności w grach, klasy układu graficznego oraz pojemności pamięci VRAM (szczególnie w segmencie Gaming, gdzie sklepy w kwocie 7 000–10 000 PLN montują procesory i5 / Ultra 5 oraz karty klasy RTX 5060, podczas gdy nasz system dobiera wyspecjalizowane jednostki Ryzen 7 7800X3D / 9850X3D oraz karty od RX 7800 XT aż po RTX 5070 Ti). Należy jednak uczciwie zaznaczyć ograniczenia naszej bazy: w niższych budżetach gamingowych (7 000–8 000 PLN) oraz w konfiguracjach biurowych silnik sięga po układy poprzednich generacji (np. RX 7800 XT, RTX 4070 Ti czy Intel 14. generacji), które oferują wyższą czystą wydajność w swojej cenie, ale cechują się wyższym poborem mocy (TDP) niż najnowsze układy z oferty sklepowej. W 2 przypadkach biurowych (07 i 08) zestawy sklepowe osiągają zbliżony poziom, wygrywając kulturą pracy i energooszczędnością. Pod kątem algorytmicznym silnik zachowuje pełną przewagę nad prostym filtrem kaskadowym – zamiast przeszukiwać pełny iloczyn kartezjański tabel, podejmuje decyzję w 10–11 regułach w czasie poniżej 0,05 s.
 
 Strony internetowe do wariantów z punktu odniesienia:
+
 1: https://www.komputronik.pl/product/996108/level-go-f02-ultra-5-rtx-5060-16gb-1tb-w11h.html
 
 2: https://www.x-kom.pl/p/1585052-desktop-smx-se-ukiyo-i5-14400f-32gb-1tb-rtx5060ti-w11x.html#Specyfikacja
