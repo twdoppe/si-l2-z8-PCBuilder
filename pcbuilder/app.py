@@ -71,7 +71,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
 
     logs.append(f"START: Budżet {budget} PLN | Cel: {cel.upper()} | Future-proof: {'TAK' if future_proof else 'NIE'}.")
 
-    # Reguła 1: Podział budżetu z uwzględnieniem aktualnych cen pamięci RAM
     rules_fired += 1
     if cel == 'gaming':
         shares = {'gpu': 0.36, 'cpu': 0.18, 'mobo': 0.10, 'ram': 0.19, 'dysk': 0.06, 'case': 0.04, 'psu': 0.07}
@@ -87,7 +86,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
         f"reszta podzespołów={round(budget - gpu_budget - cpu_budget)} PLN."
     )
 
-    # Reguła 2-3: Dobór karty graficznej
     gpu_candidates = [None]
     if cel in ['gaming', 'workstation']:
         rules_fired += 1
@@ -145,7 +143,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
         if fetched_gpus:
             gpu_candidates = fetched_gpus
 
-    # Reguła 4: Dobór procesora + Anti-Bottleneck + opłacalność platformy RAM
     rules_fired += 1
     seen_builds = session.get('seen_builds', [])
     search_prefix = f"{cel}|{budget}|{cpu_pref}|{gpu_pref}|{future_proof}|"
@@ -240,7 +237,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
     spent_total = (float(gpu['cena_rynkowa_pln']) if gpu else 0.0) + (float(cpu['cena_pln']) if cpu else 0.0)
     remaining = budget - spent_total
 
-    # Minimalne progi rynkowe pozostałych podzespołów (DDR4 od 595 PLN, DDR5 od 1149 PLN)
     MIN_MOBO = 280.0
     MIN_RAM_DDR4 = 600.0
     MIN_RAM_DDR5 = 1150.0
@@ -250,7 +246,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
     MIN_PSU = 190.0
     min_downstream = MIN_MOBO + MIN_RAM + MIN_DYSK + MIN_CASE + MIN_PSU
 
-    # Reguła 5: Chłodzenie CPU
     cooler_reserved = 0.0
     if cpu and cpu['tdp_w'] > 65:
         rules_fired += 1
@@ -266,7 +261,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             remaining = budget - spent_total
             logs.append(f"Reguła 5 (Chłodzenie): TDP {cpu['tdp_w']}W -> zarezerwowano {cooler_reserved} PLN z zaoszczędzonej puli.")
 
-    # Reguła 6: Płyta główna (z uwzględnieniem kosztu pamięci DDR4 vs DDR5)
     mobo = None
     if cpu:
         rules_fired += 1
@@ -305,7 +299,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             remaining = budget - spent_total
             logs.append(f"Reguła 6 (MOBO): {mobo['producent']} {mobo['model']} ({mobo['socket']}, {mobo['typ_pamieci']}) za {mobo['cena_pln']} PLN.")
 
-    # Reguła 7: Pamięć RAM
     ram = None
     if mobo:
         rules_fired += 1
@@ -338,7 +331,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             remaining = budget - spent_total
             logs.append(f"Reguła 7 (RAM): {ram['producent']} {ram['model']} ({ram['pojemnosc_calkowita_gb']}GB {ram['typ_pamieci']}) za {ram['cena_rynkowa_pln_od']} PLN.")
 
-    # Reguła 8: Dysk SSD
     rules_fired += 1
     dysk = None
     rem_weight = shares['dysk'] + shares['case'] + shares['psu']
@@ -364,7 +356,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
         remaining = budget - spent_total
         logs.append(f"Reguła 8 (Dysk): {dysk['producent']} {dysk['model']} {dysk['pojemnosc_gb']}GB ({dysk['interfejs']}) za {dysk['cena_pln']} PLN.")
 
-    # Reguła 9: Obudowa
     case = None
     if mobo:
         rules_fired += 1
@@ -405,7 +396,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             remaining = budget - spent_total
             logs.append(f"Reguła 9 (Obudowa): {case['brand']} {case['model']} ({case['form_factor']}) za {case['price_pln']} PLN.")
 
-    # Reguła 10: Zasilacz
     psu = None
     if cpu and mobo and ram:
         rules_fired += 1
@@ -447,7 +437,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             zlacze_info = " (natywne 12V-2x6)" if psu['native_12v_2x6'] else ""
             logs.append(f"Reguła 10 (Zasilacz): TDP {sys_power}W -> dobrano {psu['wattage_w']}W{zlacze_info} za {psu['price_pln']} PLN.")
 
-    # Reguła 11a: Jeśli dobrano 16GB RAM, a wolny budżet pozwala na 32GB — podbijamy pojemność RAM
     if ram and psu and ram['pojemnosc_calkowita_gb'] < 32 and remaining >= 500.0:
         ram_up_cap = float(ram['cena_rynkowa_pln_od']) + remaining
         ram_up_sql = (
@@ -465,7 +454,6 @@ def run_rule_engine(budget, cel, cpu_pref, gpu_pref, future_proof):
             ram = better_ram
             logs.append(f"Reguła 11a (Optymalizacja RAM): Wolne środki przeznaczono na {ram['pojemnosc_calkowita_gb']}GB {ram['typ_pamieci']}.")
 
-    # Reguła 11b: Optymalizacja reszty budżetu na pojemniejszy dysk SSD
     if dysk and remaining >= 150.0:
         upgrade_cap = float(dysk['cena_pln']) + remaining
         if cel in ['gaming', 'workstation']:
