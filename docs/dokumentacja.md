@@ -136,7 +136,7 @@ Aby uruchomić projekt lokalnie na własnym komputerze, należy wykonać poniżs
 
 ```
 git clone https://github.com/twdoppe/si-l2-z8-PCBuilder
-cd si-l2-z8-PCBuilder
+cd si-l2-z8-PCBuilder/pcbuilder
 pip install flask pymysql
 
 ```
