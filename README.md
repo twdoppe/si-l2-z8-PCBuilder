@@ -44,4 +44,4 @@ Requirements:
  
 ## Documentation
 
-Full documentation in Polish: `docs/dokumentacja.md`. Technical abstract: `docs/abstract_en.md`.
+Full documentation in Polish: `docs/dokumentacja.md`, in English: `docs/dokumentacja_ang.md` . Technical abstract: `docs/abstract_en.md`.
