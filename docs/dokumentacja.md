@@ -31,10 +31,20 @@ Mówiąc o danych, które wykorzystujemy w naszym projekcie, są to zwykłe zbio
   1. System wykorzystuje wnioskowanie regułowe w przód (forward chaining) oparte na rachunku zdań i logice pierwszego rzędu (JEŻELI warunek_1 ORAZ warunek_2, TO wniosek), co pozwala na wyprowadzanie nowych faktów z danych wejściowych użytkownika (np. wyliczenie wymaganego zapasu mocy zasilacza na podstawie sumy poboru mocy TDP dobranego procesora i karty graficznej).
   2. Przeszukiwanie przestrzeni stanów odbywa się metodą przycinania gałęzi (odrzucanie całych grup niekompatybilnych części już na wczesnym etapie wnioskowania, np. poprzez dopasowanie gniazda socket oraz typu pamięci memory_type), zamiast sprawdzania każdej kombinacji po kolei.
   3. Wybór najlepszego zestawu spośród pasujących wariantów realizuje funkcja oceny dopasowania, która maksymalizuje wykorzystanie budżetu bez jego przekroczenia oraz minimalizuje różnicę wydajnościową między CPU a GPU (unikając tzw. bottlenecku), według zasady: Ocena = (Suma cen podzespołów / Budżet) - kara za dysproporcję wydajności, przy warunku, że suma cen nie przekracza budżetu.
--Kluczowe parametry i ich wartości:
-  1. Alokacja budżetu (wagi procentowe): dynamicznie dobierana w zależności od celu – np. dla trybu gaming około 40–45% budżetu przeznaczane jest na kartę graficzną (GPU), a 20–25% na procesor (CPU); dla trybu praca/biuro większa waga przypisywana jest do CPU oraz pojemności pamięci RAM.
-  2. Zapas mocy zasilacza (PSU): minimalna moc zasilacza wyliczana jest ze wzoru: Moc zasilacza >= (TDP procesora + TDP karty graficznej + 100 W) * 1,25 (bezpieczny zapas mocy wynoszący ok. 25%).
-  3. Twarde reguły kompatybilności (ograniczenia logiczne): zgodność gniazda procesora i płyty głównej (CPU.socket == MOBO.socket), zgodność standardu pamięci RAM (MOBO.memory_type == RAM.memory_type) oraz maksymalny czas odpowiedzi systemu poniżej 2 sekund.
+- Kluczowe parametry i ich wartości:
+  1. Alokacja budżetu według presetu celu (wagi procentowe):
+     - Gaming: 45% budżetu przeznaczane jest na kartę graficzną (GPU), a 22% na procesor (CPU).
+     - Workstation: 30% na GPU oraz 35% na CPU.
+     - Office: 0% na dedykowane GPU oraz 40% na CPU ze zintegrowanym GPU.
+  2. Dynamiczne przenoszenie reszty budżetu (Rollover) i rezerwa na chłodzenie:
+     - Kwota zaoszczędzona na jednym podzespole jest automatycznie doliczana do limitu kolejnych komponentów (np. na pojemniejszy dysk SSD lub większą ilość pamięci RAM).
+     - Jeżeli wybrany procesor ma współczynnik $\text{TDP} > 65\text{ W}$, silnik automatycznie rezerwuje od 100 do 300 PLN na układ chłodzenia CPU.
+  3. Reguła Anti-Bottleneck i tryb Future-proof:
+     - Przy doborze karty graficznej z wyższego segmentu (wysoki / entuzjasta) system wymusza procesor wyposażony w co najmniej 6 rdzeni.
+     - Zaznaczenie opcji Future-proof ogranicza wybór wyłącznie do platform opartych na pamięciach DDR5.
+  4. Zapas mocy zasilacza (PSU) oraz twarde reguły kompatybilności:
+     - Moc zasilacza wyliczana jest w bezpiecznym korytarzu $1,25\times\text{–}1,65\times$ realnego zapotrzebowania zestawu na energię.
+     - Wymuszana jest pełna zgodność sprzętowa: gniazdo procesora (CPU.socket == MOBO.socket), standard pamięci (DDR4 / DDR5), format płyty głównej z obudową (ATX, Micro-ATX) oraz obsługa wymaganego złącza zasilania GPU (np. 12V-2x6 / PCIE5).
 
 ## 5. Ewaluacja *(B · 8 pkt)*
 
