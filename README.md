@@ -20,9 +20,12 @@ Across 8 tested budget scenarios (5,000–10,000 PLN), our system outperformed p
 
 ```
 git clone [https://github.com/twdoppe/si-l2-z8-PCBuilder](https://github.com/twdoppe/si-l2-z8-PCBuilder)
+1. Open Terminal
 cd si-l2-z8-PCBuilder/pcbuilder
 pip install flask pymysql
 python app.py
+2. Open your web browser
+3. Write 172.0.0.1:5000
 
 ```
 
